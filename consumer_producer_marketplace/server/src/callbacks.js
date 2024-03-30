@@ -104,8 +104,8 @@ async function updateConsumerScores(game) {
 async function updateProducerScores(game) {
   await game.players.forEach(async (player) => {
     if (player.get("role") !== "producer") return;
-    const round = player.round.get("round");
-    const capital = player.get("capital");
+    const round = player.round.get("round"); // round specific, reset after each round
+    const capital = player.get("capital"); // global
     const tempStock = player.get("stock");
     const currentStock = tempStock.find((item) => item.round === round);
     const remainingStock = currentStock.remainingStock;
@@ -118,9 +118,11 @@ async function updateProducerScores(game) {
     const value = currentStock.value;
     const agents = game.get("agents");
 
+    // human object
     const consumerAgent = agents.find(p => {
       return p.role === "consumer" && p.agent === "artificial"
     })
+    // automated object
     const others = agents.filter(p => {
       return p.role !== "consumer" || p.agent !== "artificial"
     })
@@ -487,6 +489,7 @@ async function updateProducerScores(game) {
       console.log(others);
       game.set("agents", others);
     }
+    // this is where to put the new strategy (checking if consumerAgent.strategy = "cynic")
   });
 }
 

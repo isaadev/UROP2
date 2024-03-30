@@ -16,7 +16,7 @@ import { Button } from "../components/Button";
 export function SelectRolesStage() {
     const player = usePlayer();
     const round = useRound();
-    const game = useGame();
+    const game = useGame(); // stores the treatments in the game itself
     // Used for multiplayer version
     // const game = useGame();
     const treatment = game.get("treatment");
@@ -78,6 +78,30 @@ export function SelectRolesStage() {
                             purchaseHistory: []
                         },
                     ]);
+                } else if (strategy == "cynic") {
+                    game.set("agents", [
+                        {   
+                            id: player.id,
+                            role: "producer",
+                            agent: "human",
+                            score: 0,
+                            scores: [],
+                            productionHistory: []
+                            },
+                            {
+                                id: "Artificial Consumer Agent 1",
+                                strategy: "cynic",
+                                role: "consumer",
+                                agent: "artificial",
+                                wallet: 24,
+                                score: 0,
+                                scores: [],
+                                cheatedHistory: [],
+                                scoreHistory: [],
+                                purchaseHistory: []
+                                },
+                                ]);
+
                 }
             }
             if (round.get("name") != "Round1") {
