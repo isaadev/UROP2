@@ -56,4 +56,9 @@ treatments:
         isAuto: 1
         playerCount: 1
         strategy: cynic
+    - name: Artificial Consumer - LLM
+      factors:
+        isAuto: 1
+        playerCount: 1
+        strategy: LLM
         

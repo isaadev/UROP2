@@ -181,15 +181,18 @@ export function FeedbackStage() {
         const renderProducerFeedback = () => {
 
             const stock = player.get("stock")
+
             const productQuality = stock.find((item) => item.round === round).productQuality;
+
             const productAdQuality = stock.find((item) => item.round === round).productAdQuality;
+
             const productPrice = stock.find((item) => item.round === round).productPrice;
             const productCost = stock.find((item) => item.round === round).productCost;
             const capital = player.get("capital")
             const soldStock = stock.find((item) => item.round === round).soldStock;
             const initialStock = stock.find((item) => item.round === round).initialStock;
             const profit = soldStock * productPrice - (initialStock * productCost);
-
+            // console.log("soldStock from front end: ", soldStock)
             return (
                 <div className="text-center p-4 bg-white rounded-lg shadow-md max-w-[600px] mx-auto border-8 border-gray-100">
                     <h2 className="text-2xl mb-6 font-semibold flex items-center justify-center">
