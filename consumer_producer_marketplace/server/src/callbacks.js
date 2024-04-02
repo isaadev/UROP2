@@ -222,10 +222,13 @@ async function updateProducerScores(game) {
         ". Answer with just a number, such as '5'.";
 
       const response = await getResponse(prompt);
+      // validate response
       if (response < 0 || response > remainingStock) {
         console.log("remaining stock: " + remainingStock);
         throw new Error("Invalid quantity to buy: " + response);
       }
+
+      // set soldStock to the response given by the LLM
       const soldStock = parseInt(response);
       console.log("remaining stock: " + remainingStock);
       if (soldStock == 0) {
