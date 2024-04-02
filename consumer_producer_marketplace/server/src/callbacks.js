@@ -11,10 +11,11 @@ const fileName = "choices_consumer.json";
 const filePath = path.join(folderPath, fileName);
 const buyAll = require("./buyAll"); // import buyAll for stratgy
 const buyNone = require("./buyNone"); // import buyNone for strategy
+require("dotenv").config();
 
 import OpenAI from "openai";
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: "insert api key here",
 });
 
 // Function to update the score of producers
@@ -228,7 +229,7 @@ async function updateProducerScores(game) {
         throw new Error("Invalid quantity to buy: " + response);
       }
 
-      // set soldStock to the response given by the LLM
+      // set soldStock to the response from ai
       const soldStock = parseInt(response);
       console.log("remaining stock: " + remainingStock);
       if (soldStock == 0) {
