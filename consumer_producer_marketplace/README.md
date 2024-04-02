@@ -1,9 +1,9 @@
 # How to run 
 
 - Clone the repo and make sure to run `npm i` in the terminal to install the new packages (such as the gpt LLM package)
-- And add your own gpt api key in replacement of the `process.env.OPENAI_API_KEY` in `callbacks.js`. 
+- **Important**:  add your own gpt api key in replacement of the `insert api key here` in `callbacks.js`. 
 - Make sure not to make a .env file and extract the api key from there, rather just put the your api key into the callbacks.js file while running.
-- Let me know if there is any issues or questions!
+- Let me know if there are any issues or questions!
 
 - Prompt:
 ```
